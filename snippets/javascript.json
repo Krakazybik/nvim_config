@@ -1,0 +1,7 @@
+{
+  "import styles module": {
+    "prefix": "stl",
+    "body": ["import styles from './styles.module.scss';"],
+    "description": "Import styles module"
+  }
+}
