@@ -1,4 +1,4 @@
-local overrides = require("custom.configs.overrides")
+local overrides = require "custom.configs.overrides"
 
 ---@type NvPluginSpec[]
 local plugins = {
@@ -25,7 +25,7 @@ local plugins = {
   -- override plugin configs
   {
     "williamboman/mason.nvim",
-    opts = overrides.mason
+    opts = overrides.mason,
   },
 
   {
@@ -57,7 +57,7 @@ local plugins = {
       require("nvim-ts-autotag").setup()
     end,
     lazy = true,
-    event = "VeryLazy"
+    event = "VeryLazy",
   },
   -- To make a plugin not be loaded
   -- {
@@ -77,6 +77,24 @@ local plugins = {
     lazy = true,
     event = "VeryLazy",
   },
+  --  {
+  --    "tpope/vim-surround",
+  --    lazy = true,
+  --    event = "VeryLazy",
+  --  },
+  {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {},
+    lazy = true,
+    event = "VeryLazy",
+  },
+  {
+    "vimwiki/vimwiki",
+    lazy = true,
+    event = "VeryLazy",
+  },
+  
 }
 
 return plugins

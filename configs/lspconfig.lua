@@ -4,7 +4,7 @@ local capabilities = require("plugins.configs.lspconfig").capabilities
 local lspconfig = require "lspconfig"
 
 -- if you just want default config for the servers then put them in a table
-local servers = { "html", "cssls", "tsserver", "clangd", "rust_analyzer", "marksman", "jsonls" }
+local servers = { "html", "cssls", "tsserver", "clangd", "rust_analyzer", "marksman", "jsonls", "tailwindcss", "docker_compose_language_service", "dockerls", "cssmodules_ls", "terraformls" }
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
@@ -13,8 +13,6 @@ for _, lsp in ipairs(servers) do
   }
 end
 
-lspconfig.eslint.setup {}
-
 lspconfig.eslint.setup {
   on_attach = function(client, bufnr)
     vim.api.nvim_create_autocmd("BufWritePre", {
@@ -22,6 +20,14 @@ lspconfig.eslint.setup {
       command = "EslintFixAll",
     })
   end,
+}
+
+lspconfig.cssmodules_ls.setup {
+    on_attach = function (client)
+        -- avoid accepting `definitionProvider` responses from this LSP
+        client.server_capabilities.definitionProvider = false
+        on_attach(client)
+    end,
 }
 
 --lspconfig.rust_analyzer.setup {

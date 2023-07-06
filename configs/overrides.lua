@@ -12,6 +12,12 @@ M.treesitter = {
     "c",
     "markdown",
     "markdown_inline",
+    "json",
+    "scss",
+    "terraform",
+    "yaml",
+    "rust",
+    "dockerfile",
   },
   indent = {
     enable = true,
