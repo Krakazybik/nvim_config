@@ -4,7 +4,20 @@ local capabilities = require("plugins.configs.lspconfig").capabilities
 local lspconfig = require "lspconfig"
 
 -- if you just want default config for the servers then put them in a table
-local servers = { "html", "cssls", "tsserver", "clangd", "rust_analyzer", "marksman", "jsonls", "tailwindcss", "docker_compose_language_service", "dockerls", "cssmodules_ls", "terraformls" }
+local servers = {
+  "html",
+  "cssls",
+  "clangd",
+  "cmake",
+  "rust_analyzer",
+  "marksman",
+  "jsonls",
+  "tailwindcss",
+  "docker_compose_language_service",
+  "dockerls",
+  "cssmodules_ls",
+  "terraformls",
+}
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
@@ -12,6 +25,16 @@ for _, lsp in ipairs(servers) do
     capabilities = capabilities,
   }
 end
+
+lspconfig.stylelint_lsp.setup {
+  settings = {
+    stylelintplus = {
+      autoFixOnSave = true,
+      autoFixOnFormat = true,
+    },
+  },
+  filetypes = { "css", "sass", "scss" },
+}
 
 lspconfig.eslint.setup {
   on_attach = function(client, bufnr)
@@ -23,11 +46,23 @@ lspconfig.eslint.setup {
 }
 
 lspconfig.cssmodules_ls.setup {
-    on_attach = function (client)
-        -- avoid accepting `definitionProvider` responses from this LSP
-        client.server_capabilities.definitionProvider = false
-        on_attach(client)
-    end,
+  on_attach = function(client)
+    -- avoid accepting `definitionProvider` responses from this LSP
+    client.server_capabilities.definitionProvider = false
+    on_attach(client)
+  end,
+}
+
+lspconfig.denols.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
+}
+
+lspconfig.tsserver.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  root_dir = lspconfig.util.root_pattern "package.json",
 }
 
 --lspconfig.rust_analyzer.setup {

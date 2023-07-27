@@ -60,10 +60,11 @@ local plugins = {
     event = "VeryLazy",
   },
   -- To make a plugin not be loaded
-  -- {
-  --   "NvChad/nvim-colorizer.lua",
-  --   enabled = false
-  -- },
+  {
+    "NvChad/nvim-colorizer.lua",
+    lazy = true,
+    event = "VeryLazy",
+  },
 
   -- All NvChad plugins are lazy-loaded by default
   -- For a plugin to be loaded, you will need to set either `ft`, `cmd`, `keys`, `event`, or set `lazy = false`
@@ -94,7 +95,40 @@ local plugins = {
     lazy = true,
     event = "VeryLazy",
   },
-  
+  {
+    "tools-life/taskwiki",
+    lazy = true,
+    event = "VeryLazy",
+  },
+  {
+    "kalafut/vim-taskjuggler",
+    event = { "BufRead", "BufNewFile" },
+    lazy = true,
+    init = function()
+      vim.api.nvim_create_augroup("tjpfiletypedetect", { clear = true })
+      vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+        pattern = { "*.tjp", "*.tji" },
+        command = "set filetype=tjp",
+      })
+    end,
+  },
+  {
+    "jackMort/ChatGPT.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("chatgpt").setup()
+    end,
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim",
+    },
+  },
+  {
+    "VidocqH/lsp-lens.nvim",
+    lazy = true,
+    event = "VeryLazy",
+  },
 }
 
 return plugins

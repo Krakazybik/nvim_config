@@ -17,6 +17,7 @@ M.treesitter = {
     "terraform",
     "yaml",
     "rust",
+    "cpp",
     "dockerfile",
   },
   indent = {
