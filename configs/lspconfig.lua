@@ -17,6 +17,7 @@ local servers = {
   "dockerls",
   "cssmodules_ls",
   "terraformls",
+  "prismals",
 }
 
 for _, lsp in ipairs(servers) do
@@ -25,6 +26,13 @@ for _, lsp in ipairs(servers) do
     capabilities = capabilities,
   }
 end
+
+lspconfig.jsonls.setup {
+  on_attach = on_attach,
+  init_options = {
+    provideFormatter = true,
+  },
+}
 
 lspconfig.stylelint_lsp.setup {
   settings = {
@@ -40,7 +48,11 @@ lspconfig.eslint.setup {
   on_attach = function(client, bufnr)
     vim.api.nvim_create_autocmd("BufWritePre", {
       buffer = bufnr,
-      command = "EslintFixAll",
+      callback = function()
+        local kill = { "pkill", ".*eslint -f json.*", "-f" }
+        vim.fn.jobstart(kill)
+        vim.cmd "EslintFixAll"
+      end,
     })
   end,
 }

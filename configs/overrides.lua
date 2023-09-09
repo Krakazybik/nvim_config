@@ -19,6 +19,8 @@ M.treesitter = {
     "rust",
     "cpp",
     "dockerfile",
+    "http",
+    "json",
   },
   indent = {
     enable = true,
@@ -43,10 +45,27 @@ M.mason = {
     "typescript-language-server",
     "deno",
     "prettier",
-
+    "cssmodules-language-server",
+    "docker-compose-language-service",
+    "dockerfile-language-server",
+    "eslint_d",
+    "json-lsp",
+    "jsonld-lsp",
+    "lua-language-server",
+    "marksman",
+    "prettier",
+    "prisma-language-server",
+    "stylelint-lsp",
+    "stylua",
+    "tailwindcss-language-server",
+        
+    "rust-analyzer",
+        
     -- c/cpp stuff
     "clangd",
     "clang-format",
+    "cmake-language-server",
+    "cmakelint",
   },
 }
 
