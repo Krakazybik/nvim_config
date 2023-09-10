@@ -7,7 +7,7 @@ local lspconfig = require "lspconfig"
 local servers = {
   "html",
   "cssls",
-  "clangd",
+  "ccls",
   "cmake",
   "rust_analyzer",
   "marksman",

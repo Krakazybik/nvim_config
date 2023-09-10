@@ -17,7 +17,6 @@ local sources = {
   b.formatting.stylua,
 
   -- cpp
-  b.formatting.clang_format,
   b.diagnostics.eslint_d.with { filetypes = { "javascriptreact", "javascript", "typescript", "typescriptreact" } },
 
   -- rust

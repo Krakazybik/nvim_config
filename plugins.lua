@@ -75,7 +75,7 @@ local plugins = {
     lazy = true,
     event = "VeryLazy",
   },
- {
+  {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = {},
@@ -115,6 +115,11 @@ local plugins = {
       "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope.nvim",
     },
+  },
+  {
+    "tpope/vim-surround",
+    event = "VeryLazy",
+    lazy = true,
   },
   {
     "prisma/vim-prisma",
