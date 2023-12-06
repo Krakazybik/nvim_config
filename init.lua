@@ -43,5 +43,4 @@ g.copilot_filetypes = {
   xml = true,
 }
 
-api.nvim_set_keymap("i", "<M-\\>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
-api.nvim_set_hl(0, "CopilotSuggestion", { ctermfg = 8, fg = "#bd93f9", italic = true, bold = true })
+api.nvim_set_hl(0, "CodeiumSuggestion", { ctermfg = 8, fg = "#bd93f9", italic = true, bold = true })

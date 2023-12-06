@@ -66,16 +66,6 @@ local plugins = {
     event = "VeryLazy",
   },
   {
-    "mg979/vim-visual-multi",
-    lazy = false,
-    event = "VeryLazy",
-  },
-  {
-    "github/copilot.vim",
-    lazy = true,
-    event = "VeryLazy",
-  },
-  {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = {},
@@ -105,18 +95,6 @@ local plugins = {
     end,
   },
   {
-    "jackMort/ChatGPT.nvim",
-    event = "VeryLazy",
-    config = function()
-      require("chatgpt").setup()
-    end,
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-      "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope.nvim",
-    },
-  },
-  {
     "tpope/vim-surround",
     event = "VeryLazy",
     lazy = true,
@@ -133,6 +111,15 @@ local plugins = {
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
+  },
+  {
+    "Exafunction/codeium.vim",
+    event = "BufEnter",
+    config = function()
+      vim.keymap.set("i", "<M-\\>", function()
+        return vim.fn["codeium#Accept"]()
+      end, { expr = true })
+    end,
   },
 }
 

@@ -13,7 +13,7 @@ M.custom = {
     ["<leader>rp"] = { "<Plug>RestNvimPreview", "Run preveiw request" },
   },
   i = {
-    -- ...
+    ["<C-c>"] = { "<Esc>", "exit insert mode", opts = { nowait = true } },
   },
 }
 

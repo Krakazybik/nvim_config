@@ -12,12 +12,13 @@ local sources = {
   -- b.formatting.deno_fmt, -- choosed deno for ts/js files cuz its very fast!
   b.formatting.prettier.with { filetypes = { "html", "markdown", "css", "scss", "json", "yaml" } }, -- so prettier works only on these filetypes
   b.formatting.eslint_d.with { filetypes = { "javascript", "typescript", "typescriptreact", "javascriptreact" } },
+  b.diagnostics.eslint_d.with { filetypes = { "javascriptreact", "javascript", "typescript", "typescriptreact" } },
 
   -- Lua
   b.formatting.stylua,
 
   -- cpp
-  b.diagnostics.eslint_d.with { filetypes = { "javascriptreact", "javascript", "typescript", "typescriptreact" } },
+  b.formatting.clang_format,
 
   -- rust
   b.formatting.rustfmt,
