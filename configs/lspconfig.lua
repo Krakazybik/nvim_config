@@ -18,6 +18,7 @@ local servers = {
   "cssmodules_ls",
   "terraformls",
   "prismals",
+  "ansiblels",
 }
 
 for _, lsp in ipairs(servers) do

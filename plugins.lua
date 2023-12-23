@@ -122,6 +122,11 @@ local plugins = {
       end, { expr = true })
     end,
   },
+  {
+    "pearofducks/ansible-vim",
+    event = { "BufRead", "BufNewFile" },
+    lazy = true,
+  },
 }
 
 return plugins
